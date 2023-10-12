@@ -38,5 +38,5 @@ if (file_exists($controllerFile)) {
         include('Vues/404.php');
     }
 } else {
-    include('Vues/accueil.php');
+    include('Vues/Inscription.php');
 }

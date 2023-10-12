@@ -1,8 +1,18 @@
 <?php 
-include "BD.php";
-require "BD.php";
+
+require "inscription.php";
+$connexion = mysqli_connect("localhost","root","","cosmeet");
+
+if (!$connexion)
+{
+    die("Pas connecté");
+}
+
+ob_start();
+session_start();
+
 class InscriptionModels {
-    public function inscription(){
+    public function inscription($connexion){
         if (isset($_POST['valider'])) {
             $champsRequis = ['nom', 'prenom', 'email', 'mdp1', 'mdp2'];
 
@@ -13,8 +23,15 @@ class InscriptionModels {
             if (!empty($champsManquants)) {
                 $messageErreur = "Veuillez remplir tous les champs.";
             } else {
-                $sql = "INSERT INTO utilisateurs (pseudonyme,mot_de_passe,email,date_inscription) VALUES ($nom,$prenom,$email,$mdp1,now())";
-                $result = mysqli_query($connexion,$sql);
+               $nom = $_POST['nom'];
+               $prenom = $_POST['prenom'];
+               $email = $_POST['email'];
+               $mdp1 = $_POST['mdp1'];
+
+               $stmt = $connexion->prepare("INSERT INTO utilisateurs (pseudonyme, mot_de_passe, email, date_inscription) VALUES (?, ?, ?, NOW())");
+               $stmt->bind_param("sss", $nom, $mdp1, $email);
+               
+               $stmt->close();
             }
         }
    }
