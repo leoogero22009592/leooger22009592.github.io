@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 
 use Controleur\UsrControleur;
 
-
 // Inclure le modèle de base
 require 'Modele/UsrModels.php';
 

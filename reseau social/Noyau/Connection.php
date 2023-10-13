@@ -1,43 +1,48 @@
 <?php
 
-final class Connection {
+final class Connection
+{
 
-    public PDO $pdo;
+    public PDO $bd;
 
     private static ?self $instance = null;
-    private const db_server_name = "mysql-caramelange.alwaysdata.net"; 
-    private const db_username = "295328";
-    private const db_password = "projetphp";
-    private const db_name = "caramelange_feur";
+    private const db_server_name = "mysql-cosmeet.alwaysdata.net";
+    private const db_username = "cosmeet";
+    private const db_password = "3bch8Fx&cQ98KrEP";
+    private const db_name = "ACHANGER";
 
-    private function __construct() {
-        $this->pdo = new PDO(
+    private function __construct()
+    {
+        $this->bd = new PDO(
             sprintf('mysql:dbname=%s;host=%s', self::db_name, self::db_server_name),
             self::db_username,
             self::db_password
         );
     }
 
-    public static function getInstance(): self {
+    public static function getInstance(): self
+    {
         if (null === self::$instance) {
             self::$instance = new self();
         }
         return self::$instance;
     }
-    public function getPdo() {
-        return $this->pdo;
+    public function getPdo()
+    {
+        return $this->bd;
     }
 
-    public function insert(string $S_table, array $A_parametres): bool {
+    public function insert(string $S_table, array $A_parametres): bool
+    {
         $attributs = implode(', ', array_keys($A_parametres));
         $valueKeys = implode(', ', array_map(
-            fn(string $value) => ':'.$value,
+            fn (string $value) => ':' . $value,
             array_keys($A_parametres)
         ));
         $query = sprintf(' Insert into %s (%s) values  (%s)', $S_table, $attributs, $valueKeys);
         var_dump($query);
-        $stmt = $this->pdo->prepare($query);
-        foreach($A_parametres as $attribut => $value) {
+        $stmt = $this->bd->prepare($query);
+        foreach ($A_parametres as $attribut => $value) {
             $stmt->bindParam($attribut, $value);
         }
         $value = $stmt->execute();
@@ -49,22 +54,25 @@ final class Connection {
                     json_encode($A_parametres),
                     $stmt->errorCode(),
                     json_encode($stmt->errorInfo())
-                ));
+                )
+            );
         }
         return $value;
     }
-    public function delete(string $S_table, $where) {
+    public function delete(string $S_table, $where)
+    {
         $query = "DELETE FROM $S_table WHERE $where";
 
         try {
-            $stmt = $this->pdo->prepare($query);
+            $stmt = $this->bd->prepare($query);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
             die('Error : ' . $e->getMessage());
         }
     }
-    public function update(string $S_table, $data, $where) {
+    public function update(string $S_table, $data, $where)
+    {
         $query = "UPDATE $S_table SET ";
         $parameters = array();
         foreach ($data as $key => $value) {
@@ -72,14 +80,12 @@ final class Connection {
         }
         $query .= implode(', ', $parameters);
         $query .= " WHERE $where";
-            try {
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute($data);
-        return true;
-    } catch (PDOException $e) {
-        die('Error : ' . $e->getMessage());
+        try {
+            $stmt = $this->bd->prepare($query);
+            $stmt->execute($data);
+            return true;
+        } catch (PDOException $e) {
+            die('Error : ' . $e->getMessage());
+        }
     }
-}
-
-
 }

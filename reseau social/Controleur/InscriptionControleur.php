@@ -19,6 +19,8 @@ class InscriptionControleur {
                 $messageSucces = "Inscription réussie!";
                 include 'views/inscription.php';
             }
+            $model = new InscriptionModels();
+            $model->inscription();
         }
     }
 }
