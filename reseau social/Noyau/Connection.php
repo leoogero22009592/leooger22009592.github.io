@@ -9,7 +9,7 @@ final class Connection
     private const db_server_name = "mysql-cosmeet.alwaysdata.net";
     private const db_username = "cosmeet";
     private const db_password = "3bch8Fx&cQ98KrEP";
-    private const db_name = "ACHANGER";
+    private const db_name = "cosmeet_bd";
 
     private function __construct()
     {
@@ -89,3 +89,5 @@ final class Connection
         }
     }
 }
+
+

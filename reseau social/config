@@ -10,7 +10,7 @@
     $DBusername = "cosmeet";
     $DBpassword = "3bch8Fx&cQ98KrEP";
 
-    $database = "ACHANGER";
+    $database = "cosmeet_bd";
 
     $bdd = mysqli_connect(
         $servername,

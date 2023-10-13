@@ -5,7 +5,7 @@
 
 <body>
     <div id="formulaire">
-        <form method="post" action="../reseau social/index.php?url=inscription/creerUtilisateur" enctype="multipart/form-data">
+        <form method="post" action="../reseau social/index.php?url=inscriptionControlleur/traiterFormulaire" enctype="multipart/form-data">
             <div id="Onglets">
                 <h3><a id="connexion" href="../reseau social/index.php?url=Connexion">SE CONNECTER</a> <a id="inscription">S'INSCRIRE</a></h3>
             </div>
@@ -14,7 +14,7 @@
             <input type="password" name="mdp1" placeholder="MOT DE PASSE">
             <input type="password" name="mdp2" placeholder="CONFIRMER LE MOT DE PASSE">
 
-            <button class="boutonLog" type="submit">Validé</button>
+            <button class="boutonLog" type="submit">Valider</button>
 
         </form>
     </div>
