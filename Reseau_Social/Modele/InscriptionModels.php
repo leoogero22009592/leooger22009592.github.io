@@ -24,6 +24,7 @@ class InscriptionModels
                 $email = $_POST['email'];
                 $mdp1 = $_POST['mdp1'];
                 $mdp2 = $_POST['mdp2'];
+                $date = date("Y-m-d");
 
                 if ($mdp1 != $mdp2) {
                     echo "Les mots de passe ne sont pas identiques.";
@@ -50,8 +51,8 @@ class InscriptionModels
                 } elseif ($result2->num_rows > 0) {
                     echo "Cet email est déjà utilisé.";
                 } else {
-                    $stmt = $bd->prepare("INSERT INTO utilisateurs (pseudonyme, mot_de_passe, email, date_inscription) VALUES (?, ?, ?, NOW())");
-                    $stmt->bind_param("sss", $pseudo, $mdp1, $email);
+                    $stmt = $bd->prepare("INSERT INTO utilisateurs (pseudonyme, mot_de_passe, email, date_inscription) VALUES (?, ?, ?, ?)");
+                    $stmt->bind_param($pseudo, $mdp1, $email, $date);
                     $stmt->execute();
                     $stmt->close();
                     echo "Inscription réussie.";

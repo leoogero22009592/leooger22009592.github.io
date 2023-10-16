@@ -5,10 +5,10 @@
 
 <body>
     <div id="formulaire">
-        <form method="post" action="../reseau social/index.php?url=inscriptionControleur/traiterFormulaire" enctype="multipart/form-data">
+        <form method="post" action="../index.php?url=InscriptionControleur/traiterFormulaire" enctype="multipart/form-data">
             
             <div id="Onglets">
-                <h3><a id="connexion" href="../reseau social/index.php?url=Connection">SE CONNECTER</a> <a id="inscription">S'INSCRIRE</a></h3>
+                <h3><a id="connexion" href="../index.php?url=Connection">SE CONNECTER</a> <a id="inscription">S'INSCRIRE</a></h3>
             </div>
             <input type="text" name="pseudo" placeholder="PSEUDO">
             <input type="email" name="email" placeholder="E-MAIL">
@@ -23,5 +23,5 @@
 
 </html>
 <style>
-    @import url("/resau social/CSS/inscription.css");
+    @import url("/Reseau_Social/CSS/inscription.css");
 </style>
