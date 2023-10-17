@@ -1,63 +1,56 @@
 <?php
-require_once 'Connection.php';
+require_once 'Noyau/Connection.php';
+require_once 'Vues/Inscription.php';
 class InscriptionModels
 {
-    private $bd;
-    public function __construct()
-    {
-        $this->bd = Connection::getInstance()->bd;
+    private $pdo;
+
+    public function __construct()     {
+                 $this->pdo = Connection::getInstance();     
     }
 
-    public function inscription($bd)
+    public function afficher($pseudo,$email,$mdp1,$mdp2){
+        return $pseudo && $email && $mdp1 && $mdp2;
+    }
+
+    public function inscription($pseudo,$email,$mdp1,$mdp2)
     {
+        session_start(); // a suprimer 
+
         if (isset($_POST['boutonLog'])) {
             $champsRequis = ['pseudo', 'email', 'mdp1', 'mdp2'];
+        }
+        $champsManquants = array_filter($champsRequis, function ($champ) {
+            return empty($_POST[$champ]);
+        });
 
-            $champsManquants = array_filter($champsRequis, function ($champ) {
-                return empty($_POST[$champ]);
-            });
-
-            if (!empty($champsManquants)) {
-                echo "Veuillez remplir tous les champs.";
-            } else {
-                $pseudo = $_POST['pseudo'];
-                $email = $_POST['email'];
-                $mdp1 = $_POST['mdp1'];
-                $mdp2 = $_POST['mdp2'];
-                $date = date("Y-m-d");
-
+        if (!empty($champsManquants)) {
+            $_SESSION['error'] = "Veuillez remplir tous les champs.";
+        } 
+        else {
+            try {
                 if ($mdp1 != $mdp2) {
-                    echo "Les mots de passe ne sont pas identiques.";
-                } else {
-                    $mdp1 = password_hash($mdp1, PASSWORD_DEFAULT);
+                    throw new Exception("Les mots de passe ne sont pas identiques.");
                 }
-
-                $stmt = $bd->prepare("SELECT * FROM utilisateurs WHERE pseudonyme=?");
-                $stmt->bind_param("s", $pseudo);
-                $stmt->execute();
-
-                $result = $stmt->get_result();
-                $stmt->close();
-
-                $stmt = $bd->prepare("SELECT * FROM utilisateurs WHERE email=?");
-                $stmt->bind_param("s", $email);
-                $stmt->execute();
-
-                $result2 = $stmt->get_result();
-                $stmt->close();
-
-                if ($result->num_rows > 0) {
-                    echo "Ce pseudonyme est déjà pris.";
-                } elseif ($result2->num_rows > 0) {
-                    echo "Cet email est déjà utilisé.";
-                } else {
-                    $stmt = $bd->prepare("INSERT INTO utilisateurs (pseudonyme, mot_de_passe, email, date_inscription) VALUES (?, ?, ?, ?)");
-                    $stmt->bind_param($pseudo, $mdp1, $email, $date);
-                    $stmt->execute();
-                    $stmt->close();
-                    echo "Inscription réussie.";
-                }
+            } catch (Exception $e) {
+                $_SESSION['error'] = "Une erreur s'est produite : " . $e->getMessage();
+                exit();
             }
+
+            $mdp1 = password_hash($mdp1, PASSWORD_DEFAULT);
+
+            $table = "utilisateurs";
+            $parametres = [
+                "pseudonyme" => $pseudo,
+                "mot_de_passe" => $mdp1,
+                "email" => $email,
+                "date_inscription" => date("Y-m-d H:i:s")
+            ];
+
+            $this->pdo->insert($table, $parametres);
+
+            $_SESSION['success'] = "Inscription réussie.";
+            exit();
         }
     }
-}
+} 
