@@ -1,7 +1,7 @@
 <?php
 // Ce fichier est le point d'entrée de votre application
-session_start();
 require 'Noyau/ChargementAuto.php';
+session_start();
 /*
  url pour notre premier test MVC Hello World,
  nous n'avons pas d'action précisée on visera celle par défaut

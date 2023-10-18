@@ -1,9 +1,9 @@
 <?php
-$Erreur = "";
+$condition = "";
 if (isset($A_vue['reussite'])){
-    $Erreur = $A_vue['reussite'];
+    $condition = $A_vue['reussite'];
 } elseif (isset($A_vue['erreur'])){
-    $Erreur = $A_vue['erreur'];
+    $condition = $A_vue['erreur'];
 }
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ if (isset($A_vue['reussite'])){
             <button class="boutonLog" name="boutonLog" type="submit">Valider</button>
             
             <h1 style="color: red;">
-                <?php echo $Erreur ?>
+                <?php echo $condition ?>
             </h1>
 
         </form>

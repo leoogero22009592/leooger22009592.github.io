@@ -4,7 +4,6 @@ require_once 'Vues/Inscription.php';
 class InscriptionModels
 {
     private $pdo;
-
     public function __construct()     {
         $this->pdo = Connection::getInstance();     
     }
@@ -20,23 +19,21 @@ class InscriptionModels
 
     public function mdp1egalemdp2($mdp1, $mdp2)
     {
-        return $mdp1 == $mdp2; 
+        return $mdp1 === $mdp2; 
     }
 
-    public function inscription($pseudo,$email,$mdp1,$mdp2)
+    public function inscription($pseudo,$email,$mdp1)
     {
-        session_start(); // a suprimer 
-
             $mdp1 = password_hash($mdp1, PASSWORD_DEFAULT);
-
-            $table = "utilisateurs";
-            $parametres = [
-                "pseudonyme" => $pseudo,
-                "mot_de_passe" => $mdp1,
-                "email" => $email,
-                "date_inscription" => date("Y-m-d H:i:s")
+            $S_table = "utilisateurs";
+            $A_parametres = [
+                "pseudonyme" => "$pseudo",
+                "email" => "$email",
+                "mot_de_passe" => "$mdp1",
+                "date_inscription" => date('y-m-d'),
+                "date_derniere_connexion" => date('y-m-d')
             ];
-            $this->pdo->insert($table, $parametres);
+            return $this->pdo->insert($S_table, $A_parametres);
     }
 }
 ?>
