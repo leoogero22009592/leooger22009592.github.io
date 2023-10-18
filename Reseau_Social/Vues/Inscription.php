@@ -1,9 +1,9 @@
 <?php
-$condition = "";
+$Erreur = "";
 if (isset($A_vue['reussite'])){
-    $condition = $A_vue['reussite'];
+    $Erreur = $A_vue['reussite'];
 } elseif (isset($A_vue['erreur'])){
-    $condition = $A_vue['erreur'];
+    $Erreur = $A_vue['erreur'];
 }
 ?>
 <!DOCTYPE html>
@@ -24,7 +24,11 @@ if (isset($A_vue['reussite'])){
             <input type="password" name="mdp2" placeholder="CONFIRMER LE MOT DE PASSE">
 
             <button class="boutonLog" name="boutonLog" type="submit">Valider</button>
-            <?php echo $condition ?>
+            
+            <h1 style="color: red;">
+                <?php echo $Erreur ?>
+            </h1>
+
         </form>
     </div>
 </body>
