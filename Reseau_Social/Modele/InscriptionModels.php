@@ -24,16 +24,16 @@ class InscriptionModels
 
     public function inscription($pseudo,$email,$mdp1)
     {
-            $mdp1 = password_hash($mdp1, PASSWORD_DEFAULT);
-            $S_table = "utilisateurs";
-            $A_parametres = [
-                "pseudonyme" => "$pseudo",
-                "email" => "$email",
-                "mot_de_passe" => "$mdp1",
-                "date_inscription" => date('y-m-d'),
-                "date_derniere_connexion" => date('y-m-d')
-            ];
-            return $this->pdo->insert($S_table, $A_parametres);
+        $mdp1 = password_hash($mdp1, PASSWORD_DEFAULT);
+        $S_table = "utilisateurs";
+        $A_parametres = [
+            "pseudonyme" => "$pseudo",
+            "email" => "$email",
+            "mot_de_passe" => "$mdp1",
+            "date_inscription" => date('y-m-d'),
+            "date_derniere_connexion" => date('y-m-d')
+        ];
+        return $this->pdo->insert($S_table, $A_parametres);
     }
 }
 ?>

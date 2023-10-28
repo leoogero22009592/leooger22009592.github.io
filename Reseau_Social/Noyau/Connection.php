@@ -3,7 +3,7 @@
 final class Connection
 {
 
-    public PDO $bd;
+    public PDO $pdo;
 
     private static ?self $instance = null;
     private const db_server_name = "mysql-cosmeet.alwaysdata.net";
@@ -13,7 +13,7 @@ final class Connection
 
     private function __construct()
     {
-        $this->bd = new PDO(
+        $this->pdo = new PDO(
             sprintf('mysql:dbname=%s;host=%s', self::db_name, self::db_server_name),
             self::db_username,
             self::db_password
@@ -29,7 +29,7 @@ final class Connection
     }
     public function getPdo()
     {
-        return $this->bd;
+        return $this->pdo;
     }
 
     public function insert(string $S_table, array $A_parametres): bool
@@ -41,7 +41,7 @@ final class Connection
         ));
         $query = sprintf(' Insert into %s (%s) values  (%s)', $S_table, $attributs, $valueKeys);
         var_dump($query);
-        $stmt = $this->bd->prepare($query);
+        $stmt = $this->pdo->prepare($query);
         foreach ($A_parametres as $attribut => $value) {
             $stmt->bindParam($attribut, $value);
         }
@@ -64,7 +64,7 @@ final class Connection
         $query = "DELETE FROM $S_table WHERE $where";
 
         try {
-            $stmt = $this->bd->prepare($query);
+            $stmt = $this->pdo->prepare($query);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
@@ -81,7 +81,7 @@ final class Connection
         $query .= implode(', ', $parameters);
         $query .= " WHERE $where";
         try {
-            $stmt = $this->bd->prepare($query);
+            $stmt = $this->pdo->prepare($query);
             $stmt->execute($data);
             return true;
         } catch (PDOException $e) {
