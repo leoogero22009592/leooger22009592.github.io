@@ -1,6 +1,6 @@
 <?php
 use FTP\Connection;
-require_once 'Modele/InscriptionModels.php';
+require 'Modele/InscriptionModels.php';
 
 class ControleurInscription {
     public function defautAction() {

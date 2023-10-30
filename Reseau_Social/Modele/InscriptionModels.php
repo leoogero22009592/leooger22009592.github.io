@@ -1,6 +1,6 @@
 <?php
 require_once 'Noyau/Connection.php';
-require_once 'Vues/Inscription.php';
+
 class InscriptionModels
 {
     private $pdo;
@@ -30,8 +30,6 @@ class InscriptionModels
             "pseudonyme" => "$pseudo",
             "email" => "$email",
             "mot_de_passe" => "$mdp1",
-            "date_inscription" => date('y-m-d'),
-            "date_derniere_connexion" => date('y-m-d')
         ];
         return $this->pdo->insert($S_table, $A_parametres);
     }
