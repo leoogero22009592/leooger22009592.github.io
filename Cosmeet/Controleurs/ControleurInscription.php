@@ -17,8 +17,8 @@ class ControleurInscription {
             if($O_inscription -> mdp1egalemdp2($mdp1,$mdp2)){
                 if($O_inscription-> emailUtiliser($email)){
                     Vue::montrer("Inscription", array('erreur'=>'Email deja utiliser'));
-                }
-                elseif ($O_inscription->pseudoUtilise($pseudo)){
+                
+                if ($O_inscription->pseudoUtilise($pseudo)){
                     Vue::montrer("Inscription", array('erreur'=>'Pseudonyme deja utiliser'));
                 }
 
@@ -36,5 +36,6 @@ class ControleurInscription {
         }
         //$O_inscription -> afficher($pseudo,$email,$mdp1,$mdp2);
     }
+}
 }
 ?>
