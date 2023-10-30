@@ -13,7 +13,7 @@ if (isset($A_vue['reussite'])){
 </head>
 <body>
     <div id="formulaire">
-        <form method="POST" action="../index.php?url=Inscription/traiterFormulaire" enctype="multipart/form-data">
+        <form method="POST" action="../Reseau_Social/index.php?url=Inscription/traiterFormulaire" enctype="multipart/form-data">
             
             <div id="Onglets">
                 <h3><a id="connexion" href="../index.php?url=Connection">SE CONNECTER</a> <a id="inscription">S'INSCRIRE</a></h3>
@@ -37,4 +37,3 @@ if (isset($A_vue['reussite'])){
 <style>
     @import url("/Reseau_Social/CSS/inscription.css");
 </style>
-

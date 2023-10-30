@@ -9,7 +9,7 @@
 
 </body>
     <div id="Onglets">
-        <h3><a id="inscription" href="../index.php?url=Inscription">S'INSCRIRE</a> </h3>
+        <h3><a id="inscription" href="../Reseau_Social/index.php?url=Inscription">S'INSCRIRE</a> </h3>
         <h3><a id="connexion" href="../index.php?url=Connection">SE CONNECTER</a> </h3>
     </div>  
 </body>
