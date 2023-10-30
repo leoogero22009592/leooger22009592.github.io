@@ -19,8 +19,8 @@ if (isset($A_vue['reussite'])){
         <p>Adresse email : <?= $_SESSION['utilisateur']['email'] ?></p>
     </div>
     <div class="actions">
-        <a href="../Cosmeet/index.php?url=Utilisateur/modifierPage" class="btn">Modifier les informations</a>
-        <a href="../Cosmeet/index.php?url=Utilisateur/deco" class="btn">Déconnexion</a>
+        <a href="./index.php?url=Utilisateur/modifierPage" class="btn">Modifier les informations</a>
+        <a href="./index.php?url=Utilisateur/deco" class="btn">Déconnexion</a>
     </div>
 </div>
 </body>

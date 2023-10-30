@@ -6,13 +6,15 @@
 </head>
 
 <body>
-    <div id="Onglets">
-        
-    </div>
-
     <div id="publications">
+        <?php 
+        foreach ($publications as $publication): ?>
             <div class="publication">
+                <h2><?php echo $publication['titre']; ?></h2>
+                <p><?php echo $publication['message']; ?></p>
+                <p>Publié le <?php echo $publication['date']; ?> par <?php echo $publication['auteur']; ?></p>
             </div>
+        <?php endforeach; ?>
     </div>
 </body>
 

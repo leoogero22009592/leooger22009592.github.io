@@ -1,4 +1,5 @@
 <?php
+require_once 'Modele/AccueilModels.php';
 final class ControleurAccueil
 {
     public function defautAction() {
@@ -19,10 +20,14 @@ final class ControleurAccueil
         }
     }
 
+    public function getPublications() {
+        $publications = new AccueilModels();
+        return $publications->getPublications();
+    }
     public function accueil() {
+        $publications = $this->getPublications();
         if (isset($_SESSION['utilisateur'])) {
-            //$pseudo = $_SESSION['utilisateur']['pseudo'];
-            Vue::montrer('Accueil/vue');
+            Vue::montrer('Accueil/vue', array('publications' => $publications));
         } else {
             Vue::montrer('Inscription');
         }
@@ -35,4 +40,5 @@ final class ControleurAccueil
     public function connexion() {
         Vue::montrer('Connexion/vue');
     }
+    
 }

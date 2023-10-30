@@ -18,7 +18,7 @@ class ControleurConnexion {
                 if ($O_connexion->verifierUtilisateur($pseudo,$mdp1)) {
                     $_SESSION['utilisateur'] = array(
                         'pseudo' => $pseudo,
-                        'email' =>"truc@gmail.com",
+                        'email' =>$O_connexion->getEmail($pseudo),
                         'mdp1' => $mdp1
                     );
                     Vue::montrer('Accueil/vue');
