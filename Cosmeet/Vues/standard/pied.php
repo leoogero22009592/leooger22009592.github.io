@@ -4,5 +4,5 @@
 </body>
 </html>
 <style>
-    @import url("/Reseau_Social/CSS/inscription.css");
+    @import url("/Cosmeet/CSS/inscription.css");
 </style>
