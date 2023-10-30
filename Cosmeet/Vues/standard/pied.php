@@ -4,5 +4,5 @@
 </body>
 </html>
 <style>
-    @import url("/Cosmeet/CSS/inscription.css");
+    @import url("/Cosmeet/CSS/gabarit.css");
 </style>

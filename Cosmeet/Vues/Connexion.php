@@ -13,15 +13,14 @@ if (isset($A_vue['reussite'])){
 </head>
 <body>
     <div id="formulaire">
-        <form method="POST" action="../Cosmeet/index.php?url=Inscription/traiterFormulaire" enctype="multipart/form-data">
+        <form method="POST" action="../Cosmeet/index.php?url=Connexion/traiterFormulaire" enctype="multipart/form-data">
             
             <div id="Onglets">
-                <h3><a id="Connexion" href="../Cosmeet/index.php?url=Connexion">SE CONNECTER</a> <a id="Inscription">S'INSCRIRE</a></h3>
+                <h3><a id="Connexion">SE CONNECTER</a> <a id="Inscription" href="../Cosmeet/index.php?url=Inscription"> S'INSCRIRE</a></h3>
             </div>  
             <input type="text" name="pseudo" placeholder="PSEUDO">
             <input type="email" name="email" placeholder="E-MAIL">
             <input type="password" name="mdp1" placeholder="MOT DE PASSE">
-            <input type="password" name="mdp2" placeholder="CONFIRMER LE MOT DE PASSE">
 
             <button class="boutonLog" name="boutonLog" type="submit">Valider</button>
             
@@ -35,5 +34,5 @@ if (isset($A_vue['reussite'])){
 </html>
 
 <style>
-    @import url("/Cosmeet/CSS/Inscription.css");
+    @import url("/Cosmeet/CSS/Connexion.css");
 </style>

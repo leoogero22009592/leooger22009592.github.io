@@ -43,7 +43,7 @@ final class Connection
         var_dump($query);
         $stmt = $this->pdo->prepare($query);
         foreach ($A_parametres as $attribut => $value) {
-            $stmt->bindParam($attribut, $value);
+            $stmt->bindValue(':' . $attribut, $value);
         }
         $value = $stmt->execute();
         if (false === $value) {
