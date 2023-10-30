@@ -17,6 +17,17 @@ class ConnexionModels
         return !empty($pseudo) && !empty($mdp1);
     }
 
+    public function pseudonymeExiste($pseudo)
+    {
+    $query = "SELECT count(*) FROM utilisateurs WHERE pseudonyme = :pseudo";
+    $stmt = $this->pdo->getPdo()->prepare($query);
+    $stmt->bindValue(':pseudo', $pseudo);
+    $stmt->execute();
+    $result = $stmt->fetchColumn();
+    
+    return $result > 0;
+    }
+
     public function verifierUtilisateur($pseudo, $mdp1)
     {
         $query = "SELECT * FROM utilisateurs WHERE pseudonyme = :pseudo";
