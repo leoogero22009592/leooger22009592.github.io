@@ -13,11 +13,6 @@ class InscriptionModels
         return $pseudo && $email && $mdp1 && $mdp2;
     }
 
-    public function champsRequis($pseudo, $email, $mdp1, $mdp2)
-    {
-        return !empty($pseudo) && !empty($email) && !empty($mdp1) && !empty($mdp2);
-    }
-
     public function mdp1egalemdp2($mdp1, $mdp2)
     {
         return $mdp1 === $mdp2; 

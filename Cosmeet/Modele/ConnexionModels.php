@@ -12,11 +12,6 @@ class ConnexionModels
         return $pseudo && $mdp1 && $mdp2;
     }
 
-    public function champsRequis($pseudo, $mdp1)
-    {
-        return !empty($pseudo) && !empty($mdp1);
-    }
-
     public function pseudonymeExiste($pseudo)
     {
     $query = "SELECT count(*) FROM utilisateurs WHERE pseudonyme = :pseudo";

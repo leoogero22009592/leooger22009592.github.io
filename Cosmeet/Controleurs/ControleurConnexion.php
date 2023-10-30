@@ -12,11 +12,9 @@ class ControleurConnexion {
         $mdp1 = $A_postParams['mdp1'] ?? '';
 
         $O_connexion = new ConnexionModels();
-
-        if ($O_connexion -> champsRequis($pseudo,$mdp1)) {
-            if ($O_connexion->pseudonymeExiste($pseudo)){
-                if ($O_connexion->verifierUtilisateur($pseudo,$mdp1)) {
-                    $_SESSION['utilisateur'] = array(
+        if ($O_connexion->pseudonymeExiste($pseudo)){
+            if ($O_connexion->verifierUtilisateur($pseudo,$mdp1)) {
+                $_SESSION['utilisateur'] = array(
                         'pseudo' => $pseudo,
                         'email' =>"truc@gmail.com",
                         'mdp1' => $mdp1
@@ -31,9 +29,5 @@ class ControleurConnexion {
                 Vue::montrer("Connexion", array('erreur' => 'pseudonyme existe pas'));
             }
         } 
-        else {
-            Vue::montrer("Connexion", array('erreur' => 'Tous les champs sont requis'));
-        }
     }
-}
 ?>

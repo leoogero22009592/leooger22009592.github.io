@@ -13,7 +13,6 @@ class ControleurInscription {
         $mdp2 = $A_postParams['mdp2'];
 
         $O_inscription = new InscriptionModels();
-        if ($O_inscription -> champsRequis($pseudo,$email,$mdp1,$mdp2)){
             if($O_inscription -> mdp1egalemdp2($mdp1,$mdp2)){
                 if($O_inscription-> emailUtiliser($email)){
                     Vue::montrer("Inscription", array('erreur'=>'Email deja utiliser'));
@@ -36,10 +35,5 @@ class ControleurInscription {
                 Vue::montrer("Inscription", array('erreur'=>'Mots de passe pas identique'));
             }
         }
-        else {
-            Vue::montrer("Inscription", array('erreur'=>'Champs requis tout remplire'));
-        }
-        //$O_inscription -> afficher($pseudo,$email,$mdp1,$mdp2);
     }
-}
 ?>
