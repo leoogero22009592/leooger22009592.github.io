@@ -27,6 +27,7 @@ final class Connection
         }
         return self::$instance;
     }
+
     public function getPdo()
     {
         return $this->pdo;
@@ -59,6 +60,7 @@ final class Connection
         }
         return $value;
     }
+
     public function delete(string $S_table, $where)
     {
         $query = "DELETE FROM $S_table WHERE $where";
@@ -71,6 +73,7 @@ final class Connection
             die('Error : ' . $e->getMessage());
         }
     }
+
     public function update(string $S_table, $data, $where)
     {
         $query = "UPDATE $S_table SET ";
@@ -89,5 +92,3 @@ final class Connection
         }
     }
 }
-
-

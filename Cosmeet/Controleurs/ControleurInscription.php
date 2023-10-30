@@ -15,8 +15,17 @@ class ControleurInscription {
         $O_inscription = new InscriptionModels();
         if ($O_inscription -> champsRequis($pseudo,$email,$mdp1,$mdp2)){
             if($O_inscription -> mdp1egalemdp2($mdp1,$mdp2)){
-                $O_inscription -> inscription($pseudo,$email,$mdp1);
-                Vue::montrer("Inscription", array('reussite'=>'inscription reussite'));
+                if($O_inscription-> emailUtiliser($email)){
+                    Vue::montrer("Inscription", array('erreur'=>'Email deja utiliser'));
+                }
+                elseif ($O_inscription->pseudoUtilise($pseudo)){
+                    Vue::montrer("Inscription", array('erreur'=>'Pseudonyme deja utiliser'));
+                }
+
+                else{
+                    $O_inscription -> inscription($pseudo,$email,$mdp1);
+                    Vue::montrer("Inscription", array('reussite'=>'inscription reussite'));
+                }
             }
             else{
                 Vue::montrer("Inscription", array('erreur'=>'Mots de passe pas identique'));
