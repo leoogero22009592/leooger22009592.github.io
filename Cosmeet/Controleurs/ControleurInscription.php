@@ -24,11 +24,13 @@ class ControleurInscription {
                 else{
                     $_SESSION['utilisateur'] = array(
                         'pseudo' => $pseudo,
+                        'email'=> $email,
                         'mdp1' => $mdp1
                     );
                     $O_inscription -> inscription($pseudo,$email,$mdp1);
-                    Vue::montrer('Accueil/Vue');
+                    Vue::montrer('Accueil/vue');
                 }
+            
             }
             else{
                 Vue::montrer("Inscription", array('erreur'=>'Mots de passe pas identique'));
@@ -40,5 +42,4 @@ class ControleurInscription {
         //$O_inscription -> afficher($pseudo,$email,$mdp1,$mdp2);
     }
 }
-
 ?>

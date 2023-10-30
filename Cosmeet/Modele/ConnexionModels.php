@@ -35,11 +35,11 @@ class ConnexionModels
         $stmt->bindValue(':pseudo', $pseudo);
         $stmt->execute();
         $utilisateur = $stmt->fetch();
-    
+
         if ($utilisateur) {
             return password_verify($mdp1, $utilisateur['mot_de_passe']);
         }
-    
+        
         return false;
     }
 }

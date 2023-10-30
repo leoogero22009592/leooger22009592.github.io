@@ -1,5 +1,10 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <title>Cosmeet</title>
+</head>
+
 <body>
 </body>
 </html>

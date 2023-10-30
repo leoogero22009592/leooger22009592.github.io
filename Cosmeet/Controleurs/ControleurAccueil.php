@@ -20,12 +20,12 @@ final class ControleurAccueil
     }
 
     public function accueil() {
-    if (isset($_SESSION['utilisateur'])) {
-        //$pseudo = $_SESSION['utilisateur']['pseudo'];
-        Vue::montrer('Accueil/vue');
-    } else {
-        Vue::montrer('Inscription');
-    }
+        if (isset($_SESSION['utilisateur'])) {
+            //$pseudo = $_SESSION['utilisateur']['pseudo'];
+            Vue::montrer('Accueil/vue');
+        } else {
+            Vue::montrer('Inscription');
+        }
     }
 
     public function inscription() {
