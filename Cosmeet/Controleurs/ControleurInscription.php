@@ -22,8 +22,12 @@ class ControleurInscription {
                     Vue::montrer("Inscription", array('erreur'=>'Pseudonyme deja utiliser'));
                 }
                 else{
+                    $_SESSION['utilisateur'] = array(
+                        'pseudo' => $pseudo,
+                        'mdp1' => $mdp1
+                    );
                     $O_inscription -> inscription($pseudo,$email,$mdp1);
-                    Vue::montrer("Inscription", array('reussite'=>'inscription reussite'));
+                    Vue::montrer('Accueil/Vue');
                 }
             }
             else{

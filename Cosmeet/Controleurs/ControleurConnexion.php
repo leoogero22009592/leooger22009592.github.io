@@ -12,11 +12,15 @@ class ControleurConnexion {
         $mdp1 = $A_postParams['mdp1'] ?? '';
 
         $O_connexion = new ConnexionModels();
-        
+
         if ($O_connexion -> champsRequis($pseudo,$mdp1)) {
             if ($O_connexion->pseudonymeExiste($pseudo)){
                 if ($O_connexion->verifierUtilisateur($pseudo,$mdp1)) {
-                    Vue::montrer("Connexion", array('reussite'=>'Connexion reussite'));
+                    $_SESSION['utilisateur'] = array(
+                        'pseudo' => $pseudo,
+                        'mdp1' => $mdp1
+                    );
+                    Vue::montrer('Accueil/vue');
                 }
                 else{
                     Vue::montrer("Connexion", array('erreur'=>'mot de passe mauvais'));

@@ -13,10 +13,10 @@ if (isset($A_vue['reussite'])){
 </head>
 <body>
     <div id="formulaire">
-        <form method="POST" action="../Cosmeet/index.php?url=Inscription/traiterFormulaire" enctype="multipart/form-data">
+        <form method="POST" action="./index.php?url=Inscription/traiterFormulaire" enctype="multipart/form-data">
             
             <div id="Onglets">
-                <h3><a id="Connexion" href="../Cosmeet/index.php?url=Connexion">SE CONNECTER</a> <a id="Inscription">S'INSCRIRE</a></h3>
+                <h3><a id="Connexion" href="./index.php?url=Connexion">SE CONNECTER</a> <a id="Inscription">S'INSCRIRE</a></h3>
             </div>  
             <input type="text" name="pseudo" placeholder="PSEUDO">
             <input type="email" name="email" placeholder="E-MAIL">

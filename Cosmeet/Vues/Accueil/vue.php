@@ -1,5 +1,3 @@
-<?php
-?>
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="fr">
 
@@ -7,11 +5,15 @@
     <title>Cosmeet</title>
 </head>
 
-</body>
+<body>
     <div id="Onglets">
-        <h3><a id="inscription" href="../Cosmeet/index.php?url=Inscription">S'INSCRIRE</a> </h3>
-        <h3><a id="connexion" href="../Cosmeet/index.php?url=Connexion">SE CONNECTER</a> </h3>
-    </div>  
+        
+    </div>
+
+    <div id="publications">
+            <div class="publication">
+            </div>
+    </div>
 </body>
 
 </html>
