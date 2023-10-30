@@ -19,7 +19,6 @@ if (isset($A_vue['reussite'])){
                 <h3><a id="Connexion">SE CONNECTER</a> <a id="Inscription" href="../Cosmeet/index.php?url=Inscription"> S'INSCRIRE</a></h3>
             </div>  
             <input type="text" name="pseudo" placeholder="PSEUDO">
-            <input type="email" name="email" placeholder="E-MAIL">
             <input type="password" name="mdp1" placeholder="MOT DE PASSE">
 
             <button class="boutonLog" name="boutonLog" type="submit">Valider</button>

@@ -15,15 +15,13 @@ class ControleurConnexion {
         $O_connexion = new ConnexionModels();
         
         if ($O_connexion -> champsRequis($pseudo,$email,$mdp1)) {
-             if ($O_connexion->verifierUtilisateur($pseudo, $email, $mdp1)) {
+                if ($O_connexion->verifierUtilisateur($pseudo,$mdp1)) {
                     Vue::montrer("Connexion", array('reussite'=>'Connexion reussite'));
-            }
+                }
         } 
         else {
             Vue::montrer("Connexion", array('erreur' => 'Tous les champs sont requis'));
         }
-        }
-
-
     }
+}
 ?>
