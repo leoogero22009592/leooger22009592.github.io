@@ -37,5 +37,14 @@ class ConnexionModels
         
         return false;
     }
+
+    public function getEmail($pseudo){
+        $query = "SELECT email FROM utilisateurs WHERE pseudonyme = :pseudo";
+        $stmt = $this->pdo->getPdo()->prepare($query);
+        $stmt->bindValue(':pseudo', $pseudo);
+        $stmt->execute();
+        $email = $stmt->fetchColumn();
+        return $email;
+    }
 }
 ?>
