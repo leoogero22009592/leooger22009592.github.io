@@ -26,7 +26,7 @@ class ConnexionModels
     $result = $stmt->fetchColumn();
     
     return $result > 0;
-    }
+    }    
 
     public function verifierUtilisateur($pseudo, $mdp1)
     {

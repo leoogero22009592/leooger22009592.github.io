@@ -14,15 +14,21 @@ class ControleurConnexion {
         $O_connexion = new ConnexionModels();
         
         if ($O_connexion -> champsRequis($pseudo,$mdp1)) {
-             if ($O_connexion->verifierUtilisateur($pseudo, $mdp1)) {
+            if ($O_connexion->pseudonymeExiste($pseudo)){
+                if ($O_connexion->verifierUtilisateur($pseudo,$mdp1)) {
                     Vue::montrer("Connexion", array('reussite'=>'Connexion reussite'));
+                }
+                else{
+                    Vue::montrer("Connexion", array('erreur'=>'mot de passe mauvais'));
+                }
+            }
+            else{
+                Vue::montrer("Connexion", array('erreur' => 'pseudonyme existe pas'));
             }
         } 
         else {
             Vue::montrer("Connexion", array('erreur' => 'Tous les champs sont requis'));
         }
-        }
-
-
     }
+}
 ?>
