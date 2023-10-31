@@ -40,6 +40,11 @@ class ControleurUtilisateur {
                 else{
                     $O_Utilisateur -> modifier($pseudo,$email);
                     Vue::montrer('Utilisateur', array('reussite' => 'Modification prise en compte'));
+                    $_SESSION['utilisateur'] = array(
+                        'pseudo' => $pseudo,
+                        'email'=> $email,
+                        'mdp1' => $mdp
+                    );
                 }   
         }
     }
